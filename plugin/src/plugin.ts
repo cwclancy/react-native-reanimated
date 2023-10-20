@@ -31,7 +31,7 @@ module.exports = function (): PluginItem {
         enter(path: NodePath<CallExpression>, state: ReanimatedPluginPass) {
           runWithTaggedExceptions(() => {
             processForCalleesWorklets(path, state);
-            if (isWeb()) {
+            if (isWeb(state)) {
               substituteWebCallExpression(path);
             }
           });
